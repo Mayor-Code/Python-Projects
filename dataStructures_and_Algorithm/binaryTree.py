@@ -17,3 +17,4 @@ def tuple_parse(data):
     else:
         node = TreeNode(data)
     return node
+
