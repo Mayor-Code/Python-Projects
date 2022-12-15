@@ -13,6 +13,18 @@ def insert(node, key, value=None):
         node.right.parent = node
     return node
 
+def make_balanced_bst(data, lo=0, hi=None):
+    if not hi:
+        hi = len(data)-1
+    while lo < hi:
+        mid = (lo+hi)//2
+        key, value = data[mid]
+        root = BSTNode(key, value)
+        root.left = make_balanced_bst(data, 0, mid-1)
+        root.right = make_balanced_bst(data, mid+1)
+
+    return root
+
 
 class BSTNode:
     def __init__(self, key, value=None):
@@ -69,3 +81,7 @@ class BSTNode:
 
         return is_bal_r and is_bal_l and abs(BSTNode.height(self.right) - BSTNode.height(self.left)) <= 1
 
+    def listAll(self):
+        if self is None:
+            return []
+        return BSTNode.listAll(self.left) + [(self.key, self.value)] + BSTNode.listAll(self.right)

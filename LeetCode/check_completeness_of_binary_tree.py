@@ -6,6 +6,7 @@ class TreeNode:
         self.val = val
         self.left = None
         self.right = None
+
     # function to get the distance of leaf node from the root and get some incomplete node
     @staticmethod
     def leafNodeDistance(tree):
